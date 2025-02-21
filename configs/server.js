@@ -7,6 +7,7 @@ import morgan from "morgan"
 import { dbConnection } from "./mongo.js"
 import authRoutes from "../src/auth/auth.routes.js";
 import usuarioRoutes from "../src/usuarios/usuario.routes.js";
+import publicacionesRoutes from "../src/publicaciones/publicaciones.routes.js";
 import apiLimiter from "../src/middlewares/rate-limit-validator.js"
 
 const middlewares = (app) => {
@@ -30,6 +31,7 @@ const conectarDB = async () => {
 const routes = (app) => {
     app.use("/practicasS/v1/auth", authRoutes);
     app.use("/practicasS/v1/usuario", usuarioRoutes);
+    app.use("/practicasS/v1/publicaciones", publicacionesRoutes);
 }
 
 export const initServer = () => {
