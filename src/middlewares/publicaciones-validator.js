@@ -5,7 +5,6 @@ import { validarJWT } from "../helpers/validar-jwt.js";
 export const crearPublicacionValidator = [
     validarJWT,
     body("titulo").notEmpty().withMessage("El título es requerido"),
-    body("categoria").notEmpty().withMessage("La categoría es requerida"),
     body("texto").notEmpty().withMessage("El texto es requerido"),
     validarCampos
 ];
