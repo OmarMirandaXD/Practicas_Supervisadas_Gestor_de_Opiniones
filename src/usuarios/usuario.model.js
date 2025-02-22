@@ -34,7 +34,7 @@ const usuarioSchema = new Schema({
     role: {
         type: String,
         required: [true, "El rol es obligatorio"],
-        enum: ["USUARIO_ROLE"],
+        enum: ["USUARIO_ROLE", "ADMIN_ROLE"],
         default: "USUARIO_ROLE"
     },
     status: {

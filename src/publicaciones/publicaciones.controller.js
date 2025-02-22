@@ -1,11 +1,32 @@
 import Publicacion from "./publicaciones.model.js";
+import Categoria from "../categorias/categorias.model.js";
 
 export const createPublication = async (req, res) => {
     try {
         const data = req.body;
         const autor = req.usuario._id;
 
-        const nuevaPublicacion = new Publicacion({ ...data, autor });
+        let categoria;
+        if (data.categoria) {
+            categoria = await Categoria.findById(data.categoria);
+            if (!categoria) {
+                return res.status(404).json({
+                    success: false,
+                    msg: "Categoría no encontrada"
+                });
+            }
+        } else {
+            // Usa la categoría predeterminada si no se especifica una categoría
+            categoria = await Categoria.findOne({ nombre: "Default Category" });
+            if (!categoria) {
+                return res.status(500).json({
+                    success: false,
+                    msg: "Categoría predeterminada no encontrada"
+                });
+            }
+        }
+
+        const nuevaPublicacion = new Publicacion({ ...data, autor, categoria: categoria._id });
         await nuevaPublicacion.save();
 
         res.status(201).json({
