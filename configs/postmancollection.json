@@ -1,0 +1,536 @@
+{
+    "info": {
+      "name": "Practicas Supervisadas Gestor de Opiniones",
+      "_postman_id": "12345678-1234-1234-1234-123456789012",
+      "description": "Colección de Postman para las rutas del proyecto Practicas Supervisadas Gestor de Opiniones",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Auth",
+        "item": [
+          {
+            "name": "Registro",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"name\": \"Usuario\",\n  \"surname\": \"Ejemplo\",\n  \"username\": \"usuarioejemplo\",\n  \"email\": \"usuario@example.com\",\n  \"password\": \"Password123!\",\n  \"phone\": \"12345678\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/auth/register",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "auth",
+                  "register"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Login",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"email\": \"usuario@example.com\",\n  \"password\": \"Password123!\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/auth/login",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "auth",
+                  "login"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Usuarios",
+        "item": [
+          {
+            "name": "Obtener Usuarios",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/usuario",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "usuario"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Obtener Usuario por ID",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/usuario/findUser/:uid",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "usuario",
+                  "findUser",
+                  ":uid"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Actualizar Contraseña",
+            "request": {
+              "method": "PUT",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"newPassword\": \"NewPassword123!\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/usuario/updatePassword/:uid",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "usuario",
+                  "updatePassword",
+                  ":uid"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Actualizar Usuario",
+            "request": {
+              "method": "PUT",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"name\": \"NuevoNombre\",\n  \"surname\": \"NuevoApellido\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/usuario/updateUser/:uid",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "usuario",
+                  "updateUser",
+                  ":uid"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Categorías",
+        "item": [
+          {
+            "name": "Crear Categoría",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"nombre\": \"Nueva Categoría\",\n  \"descripcion\": \"Descripción de la nueva categoría\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/categorias/createCategory",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "categorias",
+                  "createCategory"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Editar Categoría",
+            "request": {
+              "method": "PUT",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"nombre\": \"Categoría Editada\",\n  \"descripcion\": \"Descripción editada\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/categorias/editCategory/:id",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "categorias",
+                  "editCategory",
+                  ":id"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Eliminar Categoría",
+            "request": {
+              "method": "DELETE",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/categorias/deleteCategory/:id",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "categorias",
+                  "deleteCategory",
+                  ":id"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Obtener Categorías",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/categorias/getCategories",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "categorias",
+                  "getCategories"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Comentarios",
+        "item": [
+          {
+            "name": "Agregar Comentario",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"texto\": \"Este es un comentario\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/comentarios/addComment/:id",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "comentarios",
+                  "addComment",
+                  ":id"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Obtener Todos los Comentarios",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/comentarios/getAllComments",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "comentarios",
+                  "getAllComments"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Obtener Comentario por ID",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/comentarios/getComment/:id",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "comentarios",
+                  "getComment",
+                  ":id"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Actualizar Comentario",
+            "request": {
+              "method": "PUT",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"texto\": \"Comentario actualizado\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/comentarios/updateComment/:commentId/:id",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "comentarios",
+                  "updateComment",
+                  ":commentId",
+                  ":id"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Eliminar Comentario",
+            "request": {
+              "method": "DELETE",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/comentarios/deleteComment/:commentId/:id",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "comentarios",
+                  "deleteComment",
+                  ":commentId",
+                  ":id"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Publicaciones",
+        "item": [
+          {
+            "name": "Crear Publicación",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"titulo\": \"Nueva Publicación\",\n  \"texto\": \"Contenido de la nueva publicación\",\n  \"categoria\": \"ID de la categoría\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/publicaciones/createPublication",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "publicaciones",
+                  "createPublication"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Editar Publicación",
+            "request": {
+              "method": "PUT",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"titulo\": \"Publicación Editada\",\n  \"texto\": \"Contenido editado\",\n  \"categoria\": \"ID de la categoría\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/publicaciones/editPublication/:id",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "publicaciones",
+                  "editPublication",
+                  ":id"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Eliminar Publicación",
+            "request": {
+              "method": "DELETE",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/publicaciones/deletePublication/:id",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "publicaciones",
+                  "deletePublication",
+                  ":id"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Obtener Publicaciones",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:3001/practicasS/v1/publicaciones/getPublications",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3001",
+                "path": [
+                  "practicasS",
+                  "v1",
+                  "publicaciones",
+                  "getPublications"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }

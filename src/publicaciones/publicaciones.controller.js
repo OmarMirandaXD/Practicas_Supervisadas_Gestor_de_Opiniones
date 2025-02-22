@@ -16,7 +16,6 @@ export const createPublication = async (req, res) => {
                 });
             }
         } else {
-            // Usa la categoría predeterminada si no se especifica una categoría
             categoria = await Categoria.findOne({ nombre: "Default Category" });
             if (!categoria) {
                 return res.status(500).json({

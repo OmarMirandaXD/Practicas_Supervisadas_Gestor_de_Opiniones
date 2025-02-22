@@ -4,7 +4,7 @@ import express from "express"
 import cors from "cors"
 import helmet from "helmet"
 import morgan from "morgan"
-import mongoose from "mongoose" // Importa mongoose
+import mongoose from "mongoose" 
 import { dbConnection } from "./mongo.js"
 import authRoutes from "../src/auth/auth.routes.js";
 import usuarioRoutes from "../src/usuarios/usuario.routes.js";
@@ -12,10 +12,10 @@ import publicacionesRoutes from "../src/publicaciones/publicaciones.routes.js";
 import comentariosRoutes from "../src/comentarios/comentarios.routes.js";
 import categoriasRoutes from "../src/categorias/categorias.routes.js"; 
 import apiLimiter from "../src/middlewares/rate-limit-validator.js"
-import createDefaultAdmin from "./createAdmin.js"; // Importa la función para crear el administrador y la categoría por defecto
+import createDefaultAdmin from "./createAdmin.js";
 import dotenv from "dotenv";
 
-// Cargar variables de entorno desde el archivo .env
+
 dotenv.config();
 
 const middlewares = (app) => {
@@ -30,7 +30,7 @@ const middlewares = (app) => {
 const conectarDB = async () => {
     try {
         await dbConnection();
-        await createDefaultAdmin(); // Crea el administrador y la categoría por defecto después de conectar a la base de datos
+        await createDefaultAdmin(); 
     } catch (err) {
         console.log(`Database connection failed: ${err}`);
         process.exit(1);

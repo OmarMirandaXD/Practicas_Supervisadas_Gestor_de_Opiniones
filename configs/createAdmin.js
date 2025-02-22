@@ -12,7 +12,7 @@ const createDefaultAdmin = async () => {
                 surname: "User",
                 username: "admin",
                 email: "admin@example.com",
-                password: await hash("adminpassword"), // Cambia "adminpassword" por la nueva contraseña si es necesario
+                password: await hash("adminpassword"), 
                 phone: "12345678",
                 role: "ADMIN_ROLE"
             };
