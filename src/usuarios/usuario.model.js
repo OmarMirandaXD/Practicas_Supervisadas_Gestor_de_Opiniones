@@ -25,9 +25,6 @@ const usuarioSchema = new Schema({
         type: String,
         required: [true, "La contraseña es obligatoria"]
     },
-    profilePicture: {
-        type: String
-    },
     phone: {
         type: String,
         minLength: [8, "El teléfono debe tener al menos 8 caracteres"],

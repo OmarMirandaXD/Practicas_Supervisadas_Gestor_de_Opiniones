@@ -4,14 +4,12 @@ import { generateJWT } from "../helpers/generate-jwt.js";
 
 export const register = async (req, res) => {
     try {
-        const { body: data, file } = req;
-        const profilePicture = file ? file.filename : null;
+        const { body: data } = req;
         const encryptedPassword = await hash(data.password);
         
         const user = await User.create({
             ...data,
-            password: encryptedPassword,
-            profilePicture
+            password: encryptedPassword
         });
 
         return res.status(201).json({
@@ -54,8 +52,7 @@ export const login = async (req, res) => {
         return res.status(200).json({
             message: "Inicio de sesión exitoso",
             userDetails: {
-                token,
-                profilePicture: usuario.profilePicture
+                token
             }
         });
     } catch (err) {

@@ -2,20 +2,21 @@ import Publicacion from "./publicaciones.model.js";
 
 export const createPublication = async (req, res) => {
     try {
-        const { titulo, categoria, texto } = req.body;
+        const data = req.body;
         const autor = req.usuario._id;
 
-        const nuevaPublicacion = new Publicacion({ titulo, categoria, texto, autor });
+        const nuevaPublicacion = new Publicacion({ ...data, autor });
         await nuevaPublicacion.save();
 
         res.status(201).json({
             success: true,
-            publicacion: nuevaPublicacion
+            msg: 'Publicación agregada',
+            publicacion: nuevaPublicacion,
         });
     } catch (err) {
         res.status(500).json({
             success: false,
-            message: "Error al crear la publicación",
+            msg: 'Error al agregar la publicación',
             error: err.message
         });
     }
@@ -24,24 +25,24 @@ export const createPublication = async (req, res) => {
 export const editPublication = async (req, res) => {
     try {
         const { id } = req.params;
-        const { titulo, categoria, texto } = req.body;
+        const data = req.body;
         const publicacion = await Publicacion.findById(id);
 
         if (!publicacion) {
             return res.status(404).json({
                 success: false,
-                message: "Publicación no encontrada"
+                msg: "Publicación no encontrada"
             });
         }
 
         if (publicacion.autor.toString() !== req.usuario._id.toString()) {
             return res.status(403).json({
                 success: false,
-                message: "No tienes permiso para editar esta publicación"
+                msg: "No tienes permiso para editar esta publicación"
             });
         }
 
-        await publicacion.editar(titulo, categoria, texto);
+        await publicacion.editar(data.titulo, data.categoria, data.texto);
 
         res.status(200).json({
             success: true,
@@ -50,7 +51,7 @@ export const editPublication = async (req, res) => {
     } catch (err) {
         res.status(500).json({
             success: false,
-            message: "Error al editar la publicación",
+            msg: "Error al editar la publicación",
             error: err.message
         });
     }
@@ -64,14 +65,14 @@ export const deletePublication = async (req, res) => {
         if (!publicacion) {
             return res.status(404).json({
                 success: false,
-                message: "Publicación no encontrada"
+                msg: "Publicación no encontrada"
             });
         }
 
         if (publicacion.autor.toString() !== req.usuario._id.toString()) {
             return res.status(403).json({
                 success: false,
-                message: "No tienes permiso para eliminar esta publicación"
+                msg: "No tienes permiso para eliminar esta publicación"
             });
         }
 
@@ -79,12 +80,12 @@ export const deletePublication = async (req, res) => {
 
         res.status(200).json({
             success: true,
-            message: "Publicación eliminada"
+            msg: "Publicación eliminada"
         });
     } catch (err) {
         res.status(500).json({
             success: false,
-            message: "Error al eliminar la publicación",
+            msg: "Error al eliminar la publicación",
             error: err.message
         });
     }
@@ -92,7 +93,7 @@ export const deletePublication = async (req, res) => {
 
 export const getPublications = async (_req, res) => {
     try {
-        const publicaciones = await Publicacion.find().populate("autor", "name username");
+        const publicaciones = await Publicacion.find();
 
         res.status(200).json({
             success: true,
@@ -101,7 +102,7 @@ export const getPublications = async (_req, res) => {
     } catch (err) {
         res.status(500).json({
             success: false,
-            message: "Error al obtener las publicaciones",
+            msg: "Error al obtener las publicaciones",
             error: err.message
         });
     }
